@@ -125,6 +125,7 @@ class CustomDrawer extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           FirebaseAuth.instance.signOut(); // Logout
+                          user.clear();
                           Navigator.of(context).pop(); // Tutup dialog
                           context.go('/'); // Balik ke halaman login
                         },

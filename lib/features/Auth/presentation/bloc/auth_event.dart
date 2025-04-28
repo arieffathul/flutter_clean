@@ -25,3 +25,8 @@ class AuthEventRegister extends AuthEvent {
   @override
   List<Object?> get props => [name, email, password];
 }
+
+class AuthEventLogout extends AuthEvent {
+  @override
+  List<Object?> get props => [];
+}

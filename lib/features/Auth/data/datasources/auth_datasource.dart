@@ -79,9 +79,13 @@ class AuthRemoteDataSourceImplementation extends AuthRemoteDataSource {
   }
 
   @override
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    try {
+      await box.clear();
+      await firebaseAuth.signOut();
+    } catch (e) {
+      throw Exception('Gagal Logout: $e');
+    }
   }
 
   @override

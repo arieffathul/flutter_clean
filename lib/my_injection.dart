@@ -66,7 +66,7 @@ Future<void> init() async {
   myinjection.registerFactory(
     () => AuthBloc(
       signInWithEmail: myinjection(),
-      registerWithEmail: myinjection(),
+      registerWithEmail: myinjection(), signOut: myinjection(),
       // signOut: myinjection(),
     ),
   );
@@ -75,9 +75,9 @@ Future<void> init() async {
   myinjection.registerLazySingleton(
     () => SignInWithEmail(repository: myinjection()),
   );
-  // myinjection.registerLazySingleton(
-  //   () => SignOut(repository: myinjection()),
-  // );
+  myinjection.registerLazySingleton(
+    () => SignOut(repository: myinjection()),
+  );
   myinjection.registerLazySingleton(
     () => RegisterWithEmail(repository: myinjection()),
   );

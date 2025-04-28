@@ -51,3 +51,14 @@ class RegisterWithEmailParams {
   RegisterWithEmailParams(
       {required this.name, required this.email, required this.password});
 }
+
+class SignOut implements UseCase<void, NoParams> {
+  final AuthRepository repository;
+
+  SignOut({required this.repository});
+
+  @override
+  Future<Either<Exception, void>> call(NoParams params) async {
+    return await repository.signOut();
+  }
+}
