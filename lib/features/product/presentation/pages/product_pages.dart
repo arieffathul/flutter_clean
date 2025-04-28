@@ -1,3 +1,4 @@
+import 'package:clean_flutter/core/components/custom_drawer.dart';
 import 'package:clean_flutter/features/category_product/presentation/bloc/category_bloc.dart';
 import 'package:clean_flutter/features/gudang/presentation/bloc/gudang_bloc.dart';
 import 'package:clean_flutter/features/product/data/models/product_model.dart';
@@ -25,6 +26,7 @@ class ProdukPages extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
+      drawer: const CustomDrawer(),
       body: BlocConsumer<ProdukBloc, ProdukState>(
         bloc: context.read<ProdukBloc>()..add(ProdukEventGetAll()),
         listener: (context, state) {

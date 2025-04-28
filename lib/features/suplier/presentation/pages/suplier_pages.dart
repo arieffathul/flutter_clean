@@ -1,3 +1,4 @@
+import 'package:clean_flutter/core/components/custom_drawer.dart';
 import 'package:clean_flutter/features/suplier/data/models/suplier_model.dart';
 import 'package:clean_flutter/features/suplier/domain/entities/suplier.dart';
 import 'package:clean_flutter/features/suplier/presentation/bloc/suplier_bloc.dart';
@@ -22,6 +23,7 @@ class SuplierPages extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
+      drawer: const CustomDrawer(),
       body: BlocConsumer<SuplierBloc, SuplierState>(
         bloc: context.read<SuplierBloc>()..add(SuplierEventGetAll()),
         listener: (context, state) {

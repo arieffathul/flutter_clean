@@ -7,13 +7,13 @@ import 'package:clean_flutter/features/product/presentation/pages/product_pages%
 import 'package:clean_flutter/features/product/presentation/pages/product_pages.dart';
 import 'package:clean_flutter/features/suplier/presentation/pages/suplier_pages.dart';
 import 'package:clean_flutter/features/type_product/presentation/pages/type_pages.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
-class AuthNotifier extends ChangeNotifier {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-}
+// class AuthNotifier extends ChangeNotifier {
+//   final FirebaseAuth auth = FirebaseAuth.instance;
+// }
 
 class MyRouter {
   get router => GoRouter(

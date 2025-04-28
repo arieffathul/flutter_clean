@@ -1,3 +1,4 @@
+import 'package:clean_flutter/core/components/custom_drawer.dart';
 import 'package:clean_flutter/features/gudang/data/models/gudang_model.dart';
 import 'package:clean_flutter/features/gudang/domain/entities/gudang.dart';
 import 'package:clean_flutter/features/gudang/presentation/bloc/gudang_bloc.dart';
@@ -23,6 +24,7 @@ class GudangPages extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
+      drawer: const CustomDrawer(),
       body: BlocConsumer<GudangBloc, GudangState>(
         bloc: context.read<GudangBloc>()..add(GudangEventGetAll()),
         listener: (context, state) {

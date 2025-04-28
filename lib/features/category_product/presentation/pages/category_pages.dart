@@ -1,3 +1,4 @@
+import 'package:clean_flutter/core/components/custom_drawer.dart';
 import 'package:clean_flutter/features/category_product/data/models/category_models.dart';
 import 'package:clean_flutter/features/category_product/domain/entities/category.dart';
 import 'package:clean_flutter/features/category_product/presentation/bloc/category_bloc.dart';
@@ -21,6 +22,7 @@ class CategoryPages extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
+      drawer: const CustomDrawer(),
       body: BlocConsumer<CategoryBloc, CategoryState>(
         bloc: context.read<CategoryBloc>()..add(CategoryEventGetAll()),
         listener: (context, state) {

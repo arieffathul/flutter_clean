@@ -46,11 +46,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 var myinjection = GetIt.instance;
 Future<void> init() async {
   myinjection.registerLazySingleton(() => FirebaseAuth.instance);
   myinjection.registerLazySingleton(() => FirebaseFirestore.instance);
+  var box = await Hive.openBox('box');
+  myinjection.registerLazySingleton(() => box);
   // myinjection.registerLazySingleton(() => FirebaseStorage.instance);
 
   // option
@@ -86,7 +89,11 @@ Future<void> init() async {
 
   // DATA SOURCE
   myinjection.registerLazySingleton<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImplementation(firebaseAuth: myinjection()));
+      () => AuthRemoteDataSourceImplementation(
+            firebaseAuth: myinjection<FirebaseAuth>(),
+            firebaseFirestore: myinjection<FirebaseFirestore>(),
+            box: myinjection(),
+          ));
 
   /// FEATURE - PRODUK
   // BLOC

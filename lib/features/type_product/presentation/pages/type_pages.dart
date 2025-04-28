@@ -1,3 +1,4 @@
+import 'package:clean_flutter/core/components/custom_drawer.dart';
 import 'package:clean_flutter/features/type_product/data/models/type_models.dart';
 import 'package:clean_flutter/features/type_product/domain/entities/type_product.dart';
 import 'package:clean_flutter/features/type_product/presentation/bloc/type_product_bloc.dart';
@@ -21,6 +22,7 @@ class TypePages extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
+      drawer: const CustomDrawer(),
       body: BlocConsumer<TypeBloc, TypeProductState>(
         bloc: context.read<TypeBloc>()..add(TypeEventGetAll()),
         listener: (context, state) {

@@ -1,3 +1,4 @@
+import 'package:clean_flutter/core/components/custom_drawer.dart';
 import 'package:clean_flutter/features/gudang/presentation/bloc/gudang_bloc.dart';
 import 'package:clean_flutter/features/kurir/data/models/kurir_model.dart';
 import 'package:clean_flutter/features/kurir/domain/entities/kurir.dart';
@@ -23,6 +24,7 @@ class KurirPages extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
+      drawer: const CustomDrawer(),
       body: BlocConsumer<KurirBloc, KurirState>(
         bloc: context.read<KurirBloc>()..add(KurirEventGetAll()),
         listener: (context, state) {
