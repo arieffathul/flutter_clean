@@ -1,7 +1,9 @@
 import 'package:clean_flutter/features/Auth/presentation/pages/login_pages.dart';
 import 'package:clean_flutter/features/Auth/presentation/pages/register_pages.dart';
 import 'package:clean_flutter/features/category_product/presentation/pages/category_pages.dart';
+import 'package:clean_flutter/features/favorite/presentation/pages/favorite_pages.dart';
 import 'package:clean_flutter/features/gudang/presentation/pages/gudang_page.dart';
+import 'package:clean_flutter/features/keranjang/presentation/pages/keranjang_pages.dart';
 import 'package:clean_flutter/features/kurir/presentation/pages/kurir_page.dart';
 import 'package:clean_flutter/features/product/presentation/pages/product_pages%20copy.dart';
 import 'package:clean_flutter/features/product/presentation/pages/product_pages.dart';
@@ -114,6 +116,18 @@ class MyRouter {
             name: 'suplier',
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: SuplierPages()),
+          ),
+          GoRoute(
+            path: '/keranjang',
+            name: 'keranjang',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: KeranjangPage()),
+          ),
+          GoRoute(
+            path: '/favorite',
+            name: 'favorite',
+            pageBuilder: (context, state) =>
+                NoTransitionPage(child: FavoritePages()),
           ),
         ],
       );

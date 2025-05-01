@@ -1,6 +1,8 @@
 import 'package:clean_flutter/core/components/custom_drawer.dart';
 import 'package:clean_flutter/features/category_product/presentation/bloc/category_bloc.dart';
 import 'package:clean_flutter/features/gudang/presentation/bloc/gudang_bloc.dart';
+import 'package:clean_flutter/features/keranjang/data/models/keranjang_model.dart';
+import 'package:clean_flutter/features/keranjang/presentation/bloc/keranjang_bloc.dart';
 import 'package:clean_flutter/features/product/data/models/product_model.dart';
 import 'package:clean_flutter/features/product/domain/entities/product.dart';
 import 'package:clean_flutter/features/product/presentation/bloc/product_bloc.dart';
@@ -112,6 +114,32 @@ class ProdukPages extends StatelessWidget {
                                     context
                                         .read<ProdukBloc>()
                                         .add(ProdukEventDelete(id: produk.id));
+                                  },
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.shopping_cart),
+                                  onPressed: () {
+                                    // Mengirim event untuk menambahkan produk ke keranjang
+                                    context.read<KeranjangBloc>().add(
+                                          KeranjangEventAdd(
+                                            keranjangModel: KeranjangModel(
+                                              id: UniqueKey()
+                                                  .toString(), // atau ID yang sesuai dari database
+                                              produkId: produk.id,
+                                              namaProduk: produk.namaProduk,
+                                              harga: produk.harga,
+                                              quantity:
+                                                  1, // Jumlah produk yang ditambahkan ke keranjang
+                                            ),
+                                          ),
+                                        );
+
+                                    // Menampilkan SnackBar setelah produk berhasil ditambahkan ke keranjang
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(
+                                              '${produk.namaProduk} berhasil ditambahkan ke keranjang')),
+                                    );
                                   },
                                 ),
                               ],

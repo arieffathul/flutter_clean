@@ -18,6 +18,11 @@ import 'package:clean_flutter/features/gudang/data/repositories/gudang_repositor
 import 'package:clean_flutter/features/gudang/domain/repositories/gudang_repository.dart';
 import 'package:clean_flutter/features/gudang/domain/usecases/gudang_usecase.dart';
 import 'package:clean_flutter/features/gudang/presentation/bloc/gudang_bloc.dart';
+import 'package:clean_flutter/features/keranjang/data/datasources/keranjang_datasource.dart';
+import 'package:clean_flutter/features/keranjang/data/repositories/keranjang_repo_impl.dart';
+import 'package:clean_flutter/features/keranjang/domain/repositories/keranjang_repo.dart';
+import 'package:clean_flutter/features/keranjang/domain/usecases/keranjang_usecase.dart';
+import 'package:clean_flutter/features/keranjang/presentation/bloc/keranjang_bloc.dart';
 import 'package:clean_flutter/features/kurir/data/datasources/kurir_datasource.dart';
 import 'package:clean_flutter/features/kurir/data/repositories/kurir_repository_impl.dart';
 import 'package:clean_flutter/features/kurir/domain/repositories/kurir_repository.dart';
@@ -329,4 +334,44 @@ Future<void> init() async {
     () =>
         SuplierRemoteDataSourceImplementation(firebaseFirestore: myinjection()),
   );
+
+  /// FEATURE - Keranjang
+  // BLOC
+  myinjection.registerFactory(
+    () => KeranjangBloc(
+      keranjangUsecasesAdd: myinjection(),
+      keranjangUsecasesEditKeranjang: myinjection(),
+      keranjangUsecasesDeleteKeranjang: myinjection(),
+      keranjangUsecasesGetAll: myinjection(),
+      keranjangUsecasesGetById: myinjection(),
+    ),
+  );
+
+  // USECASE
+  myinjection.registerLazySingleton(
+    () => KeranjangUsecasesAddKeranjang(keranjangRepositories: myinjection()),
+  );
+  myinjection.registerLazySingleton(
+    () => KeranjangUsecasesEditKeranjang(keranjangRepositories: myinjection()),
+  );
+  myinjection.registerLazySingleton(
+    () =>
+        KeranjangUsecasesDeleteKeranjang(keranjangRepositories: myinjection()),
+  );
+  myinjection.registerLazySingleton(
+    () => KeranjangUsecasesGetAll(keranjangRepositories: myinjection()),
+  );
+  myinjection.registerLazySingleton(
+    () => KeranjangUsecasesGetById(keranjangRepositories: myinjection()),
+  );
+
+  // REPOSITORY
+  myinjection.registerLazySingleton<KeranjangRepo>(
+    () => KeranjangRepoImpl(keranjangRemoteDataSource: myinjection()),
+  );
+
+  // DATA SOURCE
+  myinjection.registerLazySingleton<KeranjangRemoteDataSource>(() =>
+      KeranjangRemoteDataSourceImplementation(
+          firebaseFirestore: myinjection()));
 }

@@ -3,6 +3,7 @@ import 'package:clean_flutter/core/routes/routes.dart';
 import 'package:clean_flutter/features/Auth/presentation/bloc/auth_bloc.dart';
 import 'package:clean_flutter/features/category_product/presentation/bloc/category_bloc.dart';
 import 'package:clean_flutter/features/gudang/presentation/bloc/gudang_bloc.dart';
+import 'package:clean_flutter/features/keranjang/presentation/bloc/keranjang_bloc.dart';
 import 'package:clean_flutter/features/kurir/presentation/bloc/kurir_bloc.dart';
 import 'package:clean_flutter/features/product/presentation/bloc/product_bloc.dart';
 import 'package:clean_flutter/features/suplier/presentation/bloc/suplier_bloc.dart';
@@ -35,8 +36,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(
             signInWithEmail: myinjection(),
-            registerWithEmail: myinjection(), signOut: myinjection(),
-            // signOut: myinjection(),
+            registerWithEmail: myinjection(),
+            signOut: myinjection(),
           ),
         ),
         BlocProvider<ProdukBloc>(
@@ -86,6 +87,14 @@ class MyApp extends StatelessWidget {
               suplierUsecasesDeleteSuplier: myinjection(),
               suplierUsecasesGetAll: myinjection(),
               suplierUsecasesGetById: myinjection()),
+        ),
+        BlocProvider<KeranjangBloc>(
+          create: (context) => KeranjangBloc(
+              keranjangUsecasesAdd: myinjection(),
+              keranjangUsecasesEditKeranjang: myinjection(),
+              keranjangUsecasesDeleteKeranjang: myinjection(),
+              keranjangUsecasesGetAll: myinjection(),
+              keranjangUsecasesGetById: myinjection()),
         ),
       ],
       child: MaterialApp.router(

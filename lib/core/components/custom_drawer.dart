@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
               //     : const AssetImage('assets/default_profile.png')
               //         as ImageProvider, // fallback foto default
               backgroundImage: NetworkImage(
-                  'https://pbs.twimg.com/profile_images/1775909266739564545/mBGUHnkP_400x400.jpg'), // fallback foto default
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1fC8rvI3_bu8JR7lOHFLvpStaJ_RTJrg06g&s'), // fallback foto default
             ),
             accountName: Text(
               // 'Ibrahim-data-dumy',
